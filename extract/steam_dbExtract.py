@@ -1,10 +1,13 @@
 import requests
+import pandas as pd
+import numpy as np
 
-url = "https://ipinfo.io/190.60.194.114/json"
+class SteamDBExtractor:
+    def __init__(self, csv_path):
+        self.csv_path = csv_path
 
-try:
-    response = requests.get(url)
-    data = response.json()
-    print(data)
-except:
-    print("Hubo un Error")
+    def queries(self):
+        self.data = pd.read_csv(self.csv_path)
+    
+    def response(self):
+        return self.data.head(5)
